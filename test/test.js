@@ -6,32 +6,27 @@ var Rover = require("../lib/rover.js");
 describe("Board", function(){
   describe("#constructor", function(){
        it("should create a board", function(done){
-           var plateau = new Board(5, 6);
+           var plateau = new Board(5, 5);
            expect(plateau.getEdgeX()).to.equal(5);
-           expect(plateau.getEdgeY()).to.equal(6);
+           expect(plateau.getEdgeY()).to.equal(5);
            done();
        });
 
        it("should stop invalid boards", function(done){
           try {
-            var plateau = new Board(-1, 6);
+            var plateau = new Board(-1, -1);
           } catch (err) { 
-            expect(err.message).equal("Board: Invalid X passed. It must be positive"); 
+            expect(err.message).equal("Board: Invalid X and Y passed. It must be positive"); 
           }
           try {
-            var plateau = new Board(1, -1);
+            var plateau = new Board(1.1, 1.1);
           } catch (err) { 
-            expect(err.message).equal("Board: Invalid Y passed. It must be positive"); 
+            expect(err.message).equal("Board: Invalid X and Y passed. It must be integer"); 
           }
           try {
-            var plateau = new Board(1.1, 1);
+            var plateau = new Board(5, 6);
           } catch (err) { 
-            expect(err.message).equal("Board: Invalid X passed. It must be integer"); 
-          }
-          try {
-            var plateau = new Board(1, 1.1);
-          } catch (err) { 
-            expect(err.message).equal("Board: Invalid Y passed. It must be integer"); 
+            expect(err.message).equal("Board: Must be rectangular"); 
           }
           done();
        });
