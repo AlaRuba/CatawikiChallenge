@@ -16,12 +16,12 @@ describe("Board", function(){
           try {
             var plateau = new Board(-1, -1);
           } catch (err) { 
-            expect(err.message).equal("Board: Invalid X and Y passed. It must be positive"); 
+            expect(err.message).equal("Board: Invalid X and Y passed. They must be positive"); 
           }
           try {
             var plateau = new Board(1.1, 1.1);
           } catch (err) { 
-            expect(err.message).equal("Board: Invalid X and Y passed. It must be integer"); 
+            expect(err.message).equal("Board: Invalid X and Y passed. They must be integer"); 
           }
           try {
             var plateau = new Board(5, 6);
