@@ -13,14 +13,22 @@ function setupBoard(line) {
 
 var roverSetup = false;
 var rover;
-function setupRover(line) {
+function setupRover(line, counter) {
   var coordinates = line.split(' ');
-  rover = new Rover(coordinates[0], coordinates[1], coordinates[2], board)
+  rover = new Rover(Number(coordinates[0]), Number(coordinates[1]), coordinates[2], board, counter)
   roverSetup = true;
+}
+
+function printResults() {
+  for (var i =0; i < results.length; i++) {
+    var resultString = results[i].join(' ');
+    console.log(resultString);
+  }
 }
 
 var results = [];
 lineReader.open('testInput.txt', function(err, reader) {
+  var counter = 1;
   try{ 
     if (err) throw err;
     while (reader.hasNextLine()) {
@@ -29,12 +37,13 @@ lineReader.open('testInput.txt', function(err, reader) {
           setupBoard(line);
         } else {
           if (!roverSetup) {
-            setupRover(line);
+            setupRover(line, counter);
           } else {
             endPos = rover.move(line);
             results.push(endPos);
             //This is so we can set-up the next rover
             roverSetup = false;
+            counter += 1;
           }
         }
       });
@@ -43,11 +52,8 @@ lineReader.open('testInput.txt', function(err, reader) {
     console.log(err);
   }
   reader.close(function(err) {
+    printResults();
     if (err) throw err;          
-    });
+  });
 
 });
-
-for (var i =0; i < results.length; i++) {
-  console.log(results[i]);
-}
