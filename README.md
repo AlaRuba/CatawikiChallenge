@@ -1,6 +1,6 @@
 # CatawikiChallenge
 
-In order to run, run npm install
+First, run npm install
 
 In order to run tests, run npm test
 
