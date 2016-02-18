@@ -5,12 +5,15 @@ var lineReader = require('line-reader');
 
 var boardSetup = false;
 var board;
+
+//This helper function sets-up the board after some post-processing 
 function setupBoard(line) {
   var coordinates = line.split(' ');
   board = new Board(Number(coordinates[0]), Number(coordinates[1]))
   boardSetup = true;
 }
 
+//This helper function sets-up a rover after some post-processing 
 var roverSetup = false;
 var rover;
 function setupRover(line, counter) {
@@ -19,6 +22,7 @@ function setupRover(line, counter) {
   roverSetup = true;
 }
 
+//This helper function prints the results
 function printResults() {
   for (var i =0; i < results.length; i++) {
     var resultString = results[i].join(' ');
