@@ -1,0 +1,29 @@
+{
+  "name": "catawikiw-challenge",
+  "version": "0.0.1",
+  "description": "Challenge for Catawiki",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "NODE_ENV=test multi='spec=- html-cov=coverage.html' mocha --reporter mocha-multi --ui bdd 'tests/index.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "~3.10.0"  
+  },
+  "devDependencies": {
+    "blanket": "~1.1.7",
+    "chai": "~3.5.0",
+    "http-status": "~0.2.0",
+    "mocha": "~2.2.5",
+    "mocha-multi": "~0.7.1",
+    "nightwatch": "~0.8.16",
+    "randexp": "~0.4.0",
+    "randomstring": "~1.1.0",
+    "should": "~7.0.1"  
+  }
+}
