@@ -20,6 +20,8 @@ function setupRover(line, counter) {
   var coordinates = line.split(' ');
   rover = new Rover(Number(coordinates[0]), Number(coordinates[1]), coordinates[2], board, counter)
   roverSetup = true;
+  //This is in case the last rover gets defined and instantiated but never moved
+  results[counter-1] = rover.getPos();
 }
 
 //This helper function prints the results
@@ -44,7 +46,7 @@ lineReader.open('testInput.txt', function(err, reader) {
             setupRover(line, counter);
           } else {
             endPos = rover.move(line);
-            results.push(endPos);
+            results[counter-1] = endPos;
             //This is so we can set-up the next rover
             roverSetup = false;
             counter += 1;
